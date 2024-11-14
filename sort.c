@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 15:01:06 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:54:42 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,31 @@
 
 void	sort_three(t_pile *pile)
 {
+	t_list	*last;
+
 	if (is_sorted(pile->pile_a))
 		return ;
-	if (*(int *)(pile->pile_a)->content > *(int *)(pile->pile_a)->next->content)
-		handle_format(pile, "sa");
-	if (!is_sorted(pile->pile_a))
+	last = ft_lstlast(pile->pile_a);
+	if (isrevsorted(pile))
 	{
-		handle_format(pile, "ra");
 		handle_format(pile, "sa");
 		handle_format(pile, "rra");
 	}
+	else if (*(int *)pile->pile_a->content < *(int *)last->content
+		&& *(int *)pile->pile_a->next->content < *(int *)last->content)
+		handle_format(pile, "sa");
+	else if (*(int *)pile->pile_a->content > *(int *)last->content
+		&& *(int *)pile->pile_a->next->content < *(int *)last->content)
+		handle_format(pile, "ra");
+	else if (*(int *)pile->pile_a->content < *(int *)last->content
+		&& *(int *)pile->pile_a->next->content > *(int *)last->content)
+	{
+		handle_format(pile, "sa");
+		handle_format(pile, "ra");
+	}
+	else if (*(int *)pile->pile_a->content > *(int *)last->content
+		&& *(int *)pile->pile_a->next->content > *(int *)last->content)
+		handle_format(pile, "rra");
 }
 
 void	sort_five(t_pile *pile)

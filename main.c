@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 15:17:03 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:56:51 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	handle_format(t_pile *pile, char *f)
 {
+	ft_printf("%s\n", f);
 	if (ft_strcmp(f, "sa") == 0)
 		sa(&(pile->pile_a));
 	if (ft_strcmp(f, "sb") == 0)
@@ -36,7 +37,6 @@ void	handle_format(t_pile *pile, char *f)
 		rrb(&(pile->pile_b));
 	if (ft_strcmp(f, "rrr") == 0)
 		rrr(&(pile->pile_a), &(pile->pile_b));
-	ft_printf("%s\n", f);
 }
 
 void	free_list(t_list **lst)

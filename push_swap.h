@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 14:55:15 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:46:45 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	free_list(t_list **lst);
 
 void	sort_three(t_pile *pile);
 void	sort_five(t_pile *pile);
+int		isrevsorted(t_pile	*pile);
 
 void	sa(t_list **a);
 void	sb(t_list **b);
