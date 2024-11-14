@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 16:54:42 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:09:01 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,21 @@ void	sort_three(t_pile *pile)
 
 void	sort_five(t_pile *pile)
 {
-	while (ft_lstsize(pile->pile_a) > 3)
-		pb(&(pile->pile_a), &(pile->pile_b));
-	sort_three(pile);
-	if (is_sorted(pile->pile_b))
-		rb(&(pile->pile_b));
-	while (pile->pile_b)
-		pa(&(pile->pile_a), &(pile->pile_b));
+	int	len;
+
+	len = ft_lstsize(pile->pile_a);
+	while (len--)
+	{
+		if (pile->pile_a->index == 0 || pile->pile_a->index == 1)
+			handle_format(pile, "pb");
+		else
+			handle_format(pile, "ra");
+	}
+	sort_3nbr(pile);
+	handle_format(pile, "pa");
+	handle_format(pile, "pa");
+	if (pile->pile_a->content > pile->pile_a->next->content)
+		handle_format(pile, "sa");
 }
 
 void	check_pile(t_list *list)
