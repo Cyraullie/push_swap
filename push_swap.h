@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/13 14:28:10 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:55:15 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,28 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <limits.h>
+
+typedef struct s_pile
+{
+	t_list	*pile_a;
+	t_list	*pile_b;
+}	t_pile;
+
+
+int		check_double(t_list *a);
+int		is_number(const char *str);
+int		is_int(const char *str);
+int		is_sorted(t_list *a);
+int		check_errors(int argc, char **argv);
 
 void	check_pile(t_list *list);
-void	free_list(t_list *a);
+
+void	handle_format(t_pile *pile, char *f);
+void	free_list(t_list **lst);
+
+void	sort_three(t_pile *pile);
+void	sort_five(t_pile *pile);
 
 void	sa(t_list **a);
 void	sb(t_list **b);
