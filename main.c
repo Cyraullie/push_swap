@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 15:01:24 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:17:03 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int	main(int argc, char **argv)
 			free_list(&(pile->pile_b));
 			handle_errors("Error\n");
 		}
+		if (is_sorted(pile->pile_a))
+			return (0);
 		choose_sort(pile);
 		ft_printf("\na\n-\n");
 		check_pile(pile->pile_a);
