@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/15 14:00:51 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:29:09 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	init(t_pile *pile, char **arg, int l)
 		*value = ft_atoi(arg[i + 1]);
 		tmp = ft_lstnew(value);
 		ft_lstadd_back(&(pile->pile_a), tmp);
-		tmp->index = -1;
 		i++;
 	}
 	pile->asize = ft_lstsize(pile->pile_a);
@@ -108,7 +107,6 @@ int	main(int argc, char **argv)
 		}
 		if (is_sorted(pile->pile_a))
 			return (0);
-		add_index(pile->pile_a);
 		choose_sort(pile);
 		debug_piles(pile);
 		free_list(&(pile->pile_a));

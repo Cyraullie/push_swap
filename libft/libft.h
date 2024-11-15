@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:03:51 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 17:09:26 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:28:51 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-	int				index;
 }	t_list;
 
 int		ft_isalpha(int c);
