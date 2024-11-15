@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:55:11 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 15:01:56 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:14:43 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_int(const char *str)
 {
 	long	num;
 
-	num = strtol(str, NULL, 10);
+	num = ft_atol(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
 	return (1);
