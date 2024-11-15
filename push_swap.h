@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/14 16:46:45 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:00:37 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct s_pile
 {
 	t_list	*pile_a;
 	t_list	*pile_b;
+	int		asize;
+	int		bsize;
 }	t_pile;
 
 
@@ -29,7 +31,9 @@ int		is_int(const char *str);
 int		is_sorted(t_list *a);
 int		check_errors(int argc, char **argv);
 
-void	check_pile(t_list *list);
+void	debug_piles(t_pile *pile);
+
+void	add_index(t_list *lst);
 
 void	handle_format(t_pile *pile, char *f);
 void	free_list(t_list **lst);
