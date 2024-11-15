@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/15 14:04:27 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:48:18 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,47 @@
 
 void	sort_three(t_pile *pile)
 {
-	t_list	*last;
+	int	first;
+	int	second;
+	int	third;
 
 	if (is_sorted(pile->pile_a))
 		return ;
-	last = ft_lstlast(pile->pile_a);
-	if (isrevsorted(pile))
+	first = *(int *)pile->pile_a->content;
+	second = *(int *)pile->pile_a->next->content;
+	third = *(int *)pile->pile_a->next->next->content;
+	if (first > second && second > third)
 	{
 		handle_format(pile, "sa");
 		handle_format(pile, "rra");
 	}
-	else if (*(int *)pile->pile_a->content < *(int *)last->content
-		&& *(int *)pile->pile_a->next->content < *(int *)last->content)
+	else if (first > second && second < third && first < third)
 		handle_format(pile, "sa");
-	else if (*(int *)pile->pile_a->content > *(int *)last->content
-		&& *(int *)pile->pile_a->next->content < *(int *)last->content)
+	else if (first > third && second < third)
 		handle_format(pile, "ra");
-	else if (*(int *)pile->pile_a->content < *(int *)last->content
-		&& *(int *)pile->pile_a->next->content > *(int *)last->content)
-	{
-		handle_format(pile, "sa");
-		handle_format(pile, "ra");
-	}
-	else if (*(int *)pile->pile_a->content > *(int *)last->content
-		&& *(int *)pile->pile_a->next->content > *(int *)last->content)
+	else if (second > third)
 		handle_format(pile, "rra");
+	else
+		handle_format(pile, "ra");
 }
 
 void	sort_five(t_pile *pile)
 {
-	int	len;
+	int	size;
 
-	len = ft_lstsize(pile->pile_a);
-	/*while (len--)
+	size = ft_lstsize(pile->pile_a);
+	if (size <= 3)
 	{
-		if (pile->pile_a->index == 0 || pile->pile_a->index == 1)
-			handle_format(pile, "pb");
-		else
-			handle_format(pile, "ra");
-	}*/
-	/*sort_three(pile);
+		sort_three(pile);
+		return ;
+	}
+	move_min_to_b(pile);
+	if (size == 5)
+		move_min_to_b(pile);
+	sort_three(pile);
 	handle_format(pile, "pa");
-	handle_format(pile, "pa");
-	if (pile->pile_a->content > pile->pile_a->next->content)
-		handle_format(pile, "sa");*/
+	if (size == 5)
+		handle_format(pile, "pa");
 }
 
 void	check_pile(t_list *list)
@@ -67,7 +64,7 @@ void	check_pile(t_list *list)
 	tmp = list;
 	while (tmp != NULL)
 	{
-		printf("%d _index:%d\n", *(int *)tmp->content, tmp->index);
+		printf("%d\n", *(int *)tmp->content);
 		tmp = tmp->next;
 	}
 }
