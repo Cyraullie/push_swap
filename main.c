@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/15 15:29:09 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:33:38 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ void	choose_sort(t_pile *pile)
 		sort_three(pile);
 	else if (size <= 5)
 		sort_five(pile);
+	else if (size <= 100)
+		quick_sort(pile);
+	else
+		quick_sort(pile);
 }
 
 int	main(int argc, char **argv)
