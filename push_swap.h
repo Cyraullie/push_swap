@@ -20,8 +20,6 @@ typedef struct s_pile
 {
 	t_list	*pile_a;
 	t_list	*pile_b;
-	int		asize;
-	int		bsize;
 }	t_pile;
 
 
@@ -32,7 +30,6 @@ int		is_sorted(t_list *a);
 int		check_errors(int argc, char **argv);
 
 void	debug_piles(t_pile *pile);
-
 void	add_index(t_list *lst);
 
 void	handle_format(t_pile *pile, char *f);

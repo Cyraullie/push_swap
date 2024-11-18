@@ -72,8 +72,6 @@ void	init(t_pile *pile, char **arg, int l)
 		ft_lstadd_back(&(pile->pile_a), tmp);
 		i++;
 	}
-	pile->asize = ft_lstsize(pile->pile_a);
-	pile->bsize = ft_lstsize(pile->pile_b);
 }
 
 void	choose_sort(t_pile *pile)
@@ -81,14 +79,13 @@ void	choose_sort(t_pile *pile)
 	int	size;
 
 	size = ft_lstsize(pile->pile_a);
-	if (size <= 3)
-		sort_three(pile);
+	if (size == 2)
+	{
+		if (*(int *)pile->pile_a->content > *(int *)pile->pile_a->next->content)
+			handle_format(pile, "sa");
+	}
 	else if (size <= 5)
 		sort_five(pile);
-	else if (size <= 100)
-		quick_sort(pile);
-	else
-		quick_sort(pile);
 }
 
 int	main(int argc, char **argv)
