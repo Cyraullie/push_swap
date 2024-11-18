@@ -12,46 +12,35 @@
 
 #include "push_swap.h"
 
-int	get_min_index(t_list *lst)
+void	move_min_to_b(t_pile *pile, int chunk_size)
 {
-	t_list	*tmp;
-	int		min;
-	int		pos;
-	int		i;
+	int min_value;
+	int i;
 
-	tmp = lst;
-	min = *(int *)tmp->content;
-	pos = 0;
-	i = 0;
-	while (tmp)
+	for (i = 0; i < chunk_size; i++)
 	{
-		if (*(int *)tmp->content < min)
+		min_value = find_min(pile->pile_a);
+		while (*(int *)pile->pile_a->content != min_value)
 		{
-			min = *(int *)tmp->content;
-			pos = i;
+			handle_format(pile, "ra");
 		}
-		tmp = tmp->next;
-		i++;
+		handle_format(pile, "pb");
 	}
-	return (pos);
 }
 
-void	move_min_to_b(t_pile *pile)
+int	find_min(t_list *pile)
 {
-	int	min_pos;
-	int	size;
+    int min_value = *(int *)pile->content;
+    t_list *tmp = pile->next;
 
-	size = ft_lstsize(pile->pile_a);
-	min_pos = get_min_index(pile->pile_a);
-	if (min_pos <= size / 2)
-	{
-		while (min_pos-- > 0)
-			handle_format(pile, "ra");
-	}
-	else
-	{
-		while (min_pos++ < size)
-			handle_format(pile, "rra");
-	}
-	handle_format(pile, "pb");
+    while (tmp)
+    {
+        if (*(int *)tmp->content < min_value)
+        {
+            min_value = *(int *)tmp->content;
+        }
+        tmp = tmp->next;
+    }
+
+    return min_value;
 }

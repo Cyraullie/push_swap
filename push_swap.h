@@ -37,10 +37,11 @@ void	free_list(t_list **lst);
 
 void	sort_three(t_pile *pile);
 void	sort_five(t_pile *pile);
+void	sort_large(t_pile *pile);
 int		isrevsorted(t_pile	*pile);
 
-int		get_min_index(t_list *lst);
-void	move_min_to_b(t_pile *pile);
+void	move_min_to_b(t_pile *pile, int chunk_size);
+int		find_min(t_list *pile);
 
 void	sa(t_list **a);
 void	sb(t_list **b);

@@ -48,15 +48,34 @@ void	sort_five(t_pile *pile)
 		sort_three(pile);
 		return ;
 	}
-	move_min_to_b(pile);
+	move_min_to_b(pile, size);
 	if (size == 5)
-		move_min_to_b(pile);
+		move_min_to_b(pile, size);
 	sort_three(pile);
 	handle_format(pile, "pa");
 	if (size == 5)
 		handle_format(pile, "pa");
 }
 
+void	sort_large(t_pile *pile)
+{
+	int size = ft_lstsize(pile->pile_a);
+	int chunk_size = size / 5;  // Diviser la pile en 5 chunks
+	// Trier par groupes en déplaçant dans pile_b
+	while (ft_lstsize(pile->pile_a) > chunk_size)
+	{
+		move_min_to_b(pile, chunk_size);  // Déplacer les éléments dans pile_b
+	}
+
+	// Trier les éléments restants dans pile_a (qui seront moins nombreux)
+	sort_three(pile);
+
+	// Déplacer les éléments de pile_b vers pile_a dans l'ordre
+	while (pile->pile_b != NULL)
+	{
+		handle_format(pile, "pa");  // Déplacer un élément de pile_b vers pile_a
+	}
+}
 
 void	check_pile(t_list *list)
 {

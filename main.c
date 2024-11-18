@@ -86,6 +86,9 @@ void	choose_sort(t_pile *pile)
 	}
 	else if (size <= 5)
 		sort_five(pile);
+	else if (size <= 100)
+		sort_large(pile);
+
 }
 
 int	main(int argc, char **argv)
@@ -104,7 +107,7 @@ int	main(int argc, char **argv)
 		{
 			free_list(&(pile->pile_a));
 			free_list(&(pile->pile_b));
-			handle_errors("Error\n");
+			handle_errors("Error tset\n");
 		}
 		if (is_sorted(pile->pile_a))
 			return (0);
