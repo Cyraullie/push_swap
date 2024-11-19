@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/19 14:13:43 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:46:14 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int count = 0;
 
 void	handle_format(t_pile *pile, char *f)
 {
-	ft_printf("%s\n", f);
+	//ft_printf("%s\n", f);
 	if (ft_strcmp(f, "sa") == 0)
 	{
 		sa(&(pile->pile_a));

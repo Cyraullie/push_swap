@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/15 15:32:22 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:36:22 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ void	sort_three(t_pile *pile);
 void	sort_five(t_pile *pile);
 void	sort_large(t_pile *pile);
 int		isrevsorted(t_pile	*pile);
+void sort_small(t_pile *pile);
+int	has_elements_in_chunk(t_list *list, int min, int max);
+int	find_largest(t_list *list);
+int find_position(t_list *list, int target);
 
-void	move_min_to_b(t_pile *pile, int chunk_size);
+void move_min_to_b(t_pile *pile);
+void move_to_top(t_pile *pile, int value, char stack_name);
 int		find_min(t_list *pile);
 
 void	sa(t_list **a);
