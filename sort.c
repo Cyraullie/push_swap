@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/20 16:24:57 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:25:54 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,8 +270,9 @@ int find_insertion_point(t_list *pile_a, int value)
 		current = current->next;
 		index++;
 	}
+	if (value > *(int*)current->content || value < min)
+		return 0;
 
-
-    return min_pos;
+	return min_pos;
 }
 
