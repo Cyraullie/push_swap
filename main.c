@@ -6,13 +6,13 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/19 14:46:14 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:05:25 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int count = 0;
+int g_count = 0;
 
 void	handle_format(t_pile *pile, char *f)
 {
@@ -20,57 +20,57 @@ void	handle_format(t_pile *pile, char *f)
 	if (ft_strcmp(f, "sa") == 0)
 	{
 		sa(&(pile->pile_a));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "sb") == 0)
 	{
 		sb(&(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "ss") == 0)
 	{
 		ss(&(pile->pile_a), &(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "pa") == 0)
 	{
 		pa(&(pile->pile_a), &(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "pb") == 0)
 	{
 		pb(&(pile->pile_a), &(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "ra") == 0)
 	{
 		ra(&(pile->pile_a));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "rb") == 0)
 	{
 		rb(&(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "rr") == 0)
 	{
 		rr(&(pile->pile_a), &(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "rra") == 0)
 	{
 		rra(&(pile->pile_a));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "rrb") == 0)
 	{
 		rrb(&(pile->pile_b));
-		count++;
+		g_count++;
 	}
 	if (ft_strcmp(f, "rrr") == 0)
 	{
 		rrr(&(pile->pile_a), &(pile->pile_b));
-		count++;
+		g_count++;
 	}
 }
 
@@ -151,7 +151,7 @@ int	main(int argc, char **argv)
 		free_list(&(pile->pile_a));
 		free_list(&(pile->pile_b));
 		free(pile);
-		ft_printf("nombre de mouvement : %d", count);
+		ft_printf("nombre de mouvement : %d", g_count);
 	}
 	return (0);
 }
