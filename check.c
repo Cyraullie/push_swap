@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:55:11 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/15 16:23:04 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:32:25 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	check_double(t_list *a)
 
 int	is_number(const char *str)
 {
+	if (str == NULL)
+		return (0);
 	if (*str == '-' || *str == '+')
 		str++;
 	if (!*str)
@@ -44,6 +46,7 @@ int	is_number(const char *str)
 			return (0);
 		str++;
 	}
+
 	return (1);
 }
 
@@ -51,22 +54,26 @@ int	is_int(const char *str)
 {
 	long	num;
 
+	if (str == NULL)
+		return (0);
 	num = ft_atol(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
 	return (1);
 }
 
-int	is_sorted(t_list *a)
+int	is_sorted_o(t_list *a)
 {
-	t_list	*tmp;
+	t_list	*current;
 
-	tmp = a;
-	while (tmp && tmp->next)
+	if (!a || !a->next)
+		return (1);
+	current = a;
+	while (current->next)
 	{
-		if (*(int *)tmp->content > *(int *)tmp->next->content)
+		if (*(int *)current->content > *(int *)current->next->content)
 			return (0);
-		tmp = tmp->next;
+		current = current->next;
 	}
 	return (1);
 }

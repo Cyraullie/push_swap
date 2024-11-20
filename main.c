@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/20 11:05:25 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:13:58 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,10 @@ void	choose_sort(t_pile *pile)
 	}
 	else if (size <= 5)
 		sort_five(pile);
-	else if (size <= 100)
-		sort_large(pile);
+	else
+		sort_large(pile); 
+	/*else if (size <= 100)
+		sort_large(pile);*/
 
 }
 
@@ -132,20 +134,20 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		if (check_errors(argc, argv))
-			handle_errors("Error\n");
+		/*if (check_errors(argc, argv))
+			handle_errors("Error not number or not int\n");*/
 		pile = malloc(sizeof(t_pile));
 		if (!pile)
 			handle_errors("Error\n");
 		init(pile, argv, argc - 1);
-		if (check_double(pile->pile_a))
+		/*if (check_double(pile->pile_a))
 		{
 			free_list(&(pile->pile_a));
 			free_list(&(pile->pile_b));
-			handle_errors("Error tset\n");
+			handle_errors("Error double\n");
 		}
 		if (is_sorted(pile->pile_a))
-			return (0);
+			return (0);*/
 		choose_sort(pile);
 		debug_piles(pile);
 		free_list(&(pile->pile_a));

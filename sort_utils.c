@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:30:03 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/20 11:15:43 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:15:20 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,28 @@ int	find_min(t_list *pile)
 	}
 	return (min_value);
 }
+
+int find_max(t_list *pile)
+{
+    int max;
+    t_list *current;
+
+    if (!pile)
+        return 0;
+
+    max = *(int*)pile->content;
+    current = pile->next;
+
+    while (current)
+    {
+        if (*(int*)current->content > max)
+            max = *(int*)current->content;
+        current = current->next;
+    }
+
+    return max;
+}
+
 
 int	find_largest(t_list *list)
 {

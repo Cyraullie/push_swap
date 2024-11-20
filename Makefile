@@ -6,19 +6,19 @@
 #    By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 11:31:20 by cgoldens          #+#    #+#              #
-#    Updated: 2024/11/20 10:53:46 by cgoldens         ###   ########.fr        #
+#    Updated: 2024/11/20 15:28:25 by cgoldens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT_PATH = libft/
 LIBFT = ./libft/libft.a
 RM = rm -rf
 
-SRCS = main.c swap.c push.c rotate.c reverse.c check.c sort.c utils.c sort_utils.c sort_utils2.c
+SRCS = main.c swap.c push.c rotate.c reverse.c check.c sort.c utils.c sort_utils.c sort_utils2.c sort_test.c
 
 OBJS = $(SRCS:.c=.o)
 
