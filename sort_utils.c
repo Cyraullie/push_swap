@@ -6,87 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:30:03 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/20 16:15:20 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:42:22 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	find_min(t_list *pile)
-{
-	int		min_value;
-	t_list	*tmp;
-
-	tmp = pile->next;
-	min_value = *(int *)pile->content;
-	while (tmp)
-	{
-		if (*(int *)tmp->content < min_value)
-		{
-			min_value = *(int *)tmp->content;
-		}
-		tmp = tmp->next;
-	}
-	return (min_value);
-}
-
-int find_max(t_list *pile)
-{
-    int max;
-    t_list *current;
-
-    if (!pile)
-        return 0;
-
-    max = *(int*)pile->content;
-    current = pile->next;
-
-    while (current)
-    {
-        if (*(int*)current->content > max)
-            max = *(int*)current->content;
-        current = current->next;
-    }
-
-    return max;
-}
-
-
-int	find_largest(t_list *list)
-{
-	int		largest;
-	t_list	*current;
-
-	if (!list)
-		return (INT_MIN);
-	current = list;
-	largest = *(int *)current->content;
-	while (current != NULL)
-	{
-		if (*(int *)current->content > largest)
-			largest = *(int *)current->content;
-		current = current->next;
-	}
-	return (largest);
-}
-
-int	has_elements_in_chunk(t_list *list, int min, int max)
-{
-	t_list	*current;
-	int		value;
-
-	if (!list)
-		return (0);
-	current = list;
-	while (current != NULL)
-	{
-		value = *(int *)current->content;
-		if (value >= min && value <= max)
-			return (1);
-		current = current->next;
-	}
-	return (0);
-}
 
 void	move_to_top(t_pile *pile, int value, char stack_name)
 {
@@ -126,4 +50,21 @@ void	move_min_to_b(t_pile *pile)
 	}
 	move_to_top(pile, min_value, 'a');
 	handle_format(pile, "pb");
+}
+
+int	find_position(t_list *list, int target)
+{
+	int		position;
+	t_list	*current;
+
+	position = 0;
+	current = list;
+	while (current != NULL)
+	{
+		if (*(int *)current->content == target)
+			return (position);
+		current = current->next;
+		position++;
+	}
+	return (-1);
 }

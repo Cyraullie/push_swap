@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/20 16:23:25 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:41:59 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ void	free_list(t_list **lst);
 
 void	sort_three(t_pile *pile);
 void	sort_five(t_pile *pile);
-void	sort_large(t_pile *pile);
 int		isrevsorted(t_pile	*pile);
-void	sort_small(t_pile *pile);
-int		has_elements_in_chunk(t_list *list, int min, int max);
-int		find_largest(t_list *list);
 int		find_position(t_list *list, int target);
 
 void    move_top_util(int position, t_pile *pile, char stack_name, char *base);
@@ -63,15 +59,9 @@ void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
 
-int find_insertion_point(t_list *pile_a, int value);
-int find_max(t_list *pile);
-void rotate_a_to_position(t_pile *pile);
-void push_chunk_to_b(t_pile *pile, int max_value);
-void rotate_to_top(t_pile *pile, int index, char stack);
-int find_min_position(t_list *pile);
-void move_to_top_b(t_pile *pile, int index);
-int calculate_score(t_pile *pile, int value, int index);
-int find_best_move(t_pile *pile);
+void radix_sort(t_pile *piles);
+int pile_size(t_list *pile);
+int find_min_index(t_list *pile);
 /*
 void quick_sort_push_swap(t_pile *piles);
 //void quick_sort_a(t_pile *piles, int len, int count_r);
