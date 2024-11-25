@@ -6,14 +6,14 @@
 #    By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 11:31:20 by cgoldens          #+#    #+#              #
-#    Updated: 2024/11/20 15:28:25 by cgoldens         ###   ########.fr        #
+#    Updated: 2024/11/25 14:31:56 by cgoldens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFT_PATH = libft/
 LIBFT = ./libft/libft.a
 RM = rm -rf
