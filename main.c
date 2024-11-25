@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 17:13:14 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:21:08 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ void	choose_sort(t_pile *pile)
 	}
 	else if (size <= 5)
 		sort_five(pile);
-	/*else
-		sort_large(pile); */
 	else
 		radix_sort(pile);
 
@@ -131,9 +129,11 @@ void	choose_sort(t_pile *pile)
 int	main(int argc, char **argv)
 {
 	t_pile	*pile;
-
+	ft_printf("%d", argc);
 	if (argc > 1)
 	{
+		if (argc == 2)
+			//TODO faire en sorte de fonctionner meme avec comme argument "4 67 3 87 23"
 		/*if (check_errors(argc, argv))
 			handle_errors("Error not number or not int\n");*/
 		pile = malloc(sizeof(t_pile));
