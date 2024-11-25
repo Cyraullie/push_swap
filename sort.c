@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 15:42:13 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:12:51 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_three(t_pile *pile)
 	int	second;
 	int	third;
 
-	if (is_sorted_o(pile->pile_a))
+	if (is_sorted(pile->pile_a))
 		return ;
 	first = *(int *)pile->pile_a->content;
 	second = *(int *)pile->pile_a->next->content;

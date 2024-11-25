@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 16:25:20 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:13:14 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int g_count = 0;
 
 void	handle_format(t_pile *pile, char *f)
 {
-	//ft_printf("%s\n", f);
+	ft_printf("%s\n", f);
 	if (ft_strcmp(f, "sa") == 0)
 	{
 		sa(&(pile->pile_a));
@@ -140,14 +140,14 @@ int	main(int argc, char **argv)
 		if (!pile)
 			handle_errors("Error\n");
 		init(pile, argv, argc - 1);
-		/*if (check_double(pile->pile_a))
+		if (check_double(pile->pile_a))
 		{
 			free_list(&(pile->pile_a));
 			free_list(&(pile->pile_b));
 			handle_errors("Error double\n");
 		}
 		if (is_sorted(pile->pile_a))
-			return (0);*/
+			return (0);
 		choose_sort(pile);
 		debug_piles(pile);
 		free_list(&(pile->pile_a));

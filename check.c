@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:55:11 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/20 15:32:25 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:12:28 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	is_int(const char *str)
 	return (1);
 }
 
-int	is_sorted_o(t_list *a)
+int	is_sorted(t_list *a)
 {
 	t_list	*current;
 

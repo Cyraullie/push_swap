@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 15:41:59 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:12:34 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_pile
 int		check_double(t_list *a);
 int		is_number(const char *str);
 int		is_int(const char *str);
-int		is_sorted_o(t_list *a);
+int		is_sorted(t_list *a);
 int		check_errors(int argc, char **argv);
 
 void	debug_piles(t_pile *pile);
