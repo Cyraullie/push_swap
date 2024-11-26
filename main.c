@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/26 15:02:13 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:30:32 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	choose_sort(t_pile *pile)
 	else if (size <= 5)
 		sort_five(pile);
 	else
-		radix_sort(pile);
+		turk_sort(pile);
 
 }
 
@@ -174,11 +174,13 @@ int	main(int argc, char **argv)
 		if (is_sorted(pile->pile_a))
 			return (0);
 		choose_sort(pile);
+		//TODO enlever ca
 		//debug_piles(pile);
 		free_list(&(pile->pile_a));
 		free_list(&(pile->pile_b));
 		free(pile);
-		//ft_printf("nombre de mouvement : %d", g_count);
+		//TODO enlever ca
+		ft_printf("nombre de mouvement : %d", g_count);
 	}
 	return (0);
 }

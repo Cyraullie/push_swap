@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:28:00 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 17:14:23 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:35:22 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int pile_size(t_list *pile)
     }
     return size;
 }
-
+/*
 // Algorithme Radix utilisant handle_format
 void radix_sort(t_pile *piles)
 {
     int max_num = 0;
     int max_bits = 0;
     int size = pile_size(piles->pile_a);
+    t_list *current;
 
     // Séparer les négatifs et positifs
     for (int i = 0; i < size; i++)
@@ -42,7 +43,7 @@ void radix_sort(t_pile *piles)
     }
 
     // Trier les positifs dans pile_a
-    t_list *current = piles->pile_a;
+    current = piles->pile_a;
     while (current)
     {
         if (*(int*)current->content > max_num)
@@ -80,6 +81,7 @@ void radix_sort(t_pile *piles)
         handle_format(piles, "rb");           // Rotation de pile_b
     }
 
+    size = pile_size(piles->pile_b);
     current = piles->pile_b;
     max_num = 0;
 
@@ -110,6 +112,51 @@ void radix_sort(t_pile *piles)
         while (piles->pile_b)
             handle_format(piles, "pa");   // Push vers pile_a pour remettre en ordre
     }
+		debug_piles(piles);
 
 }
+*/
+//TODO j'ai une boucle infini de merde
+// Fonction pour trier plus de 5 éléments
+void turk_sort(t_pile *piles)
+{
+    int size = pile_size(piles->pile_a);
 
+    // Diviser la pile en segments
+    int segment_size = size / 2;
+    for (int i = 0; i < segment_size; i++)
+    {
+        // Pousser les éléments inférieurs à la médiane dans pile_b
+        if (*(int*)piles->pile_a->content < size / 2)
+            handle_format(piles, "pb");
+        else
+            handle_format(piles, "ra");
+    }
+
+    // Trier chaque segment individuellement
+    while (pile_size(piles->pile_b) > 0)
+    {
+        // Trouver le minimum dans pile_b et le pousser dans pile_a
+        int min_value = find_min_value(piles->pile_b);
+        while (*(int*)piles->pile_b->content != min_value)
+            handle_format(piles, "rb");
+        handle_format(piles, "pa");
+    }
+
+    // Finalement, assurez-vous que pile_a est complètement triée
+    while (!is_sorted(piles->pile_a))
+        handle_format(piles, "ra");
+}
+
+// Fonction auxiliaire pour trouver la valeur minimale dans une pile
+int find_min_value(t_list *pile)
+{
+    int min = *(int*)pile->content;
+    while (pile)
+    {
+        if (*(int*)pile->content < min)
+            min = *(int*)pile->content;
+        pile = pile->next;
+    }
+    return min;
+}

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 17:12:34 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:30:52 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
 
-void radix_sort(t_pile *piles);
+void turk_sort(t_pile *piles);
+int find_min_value(t_list *pile);
 int pile_size(t_list *pile);
-int find_min_index(t_list *pile);
+/*void radix_sort(t_pile *piles);
+int find_min_index(t_list *pile);*/
 /*
 void quick_sort_push_swap(t_pile *piles);
 //void quick_sort_a(t_pile *piles, int len, int count_r);
