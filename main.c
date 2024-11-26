@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 17:21:08 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:02:13 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	init(t_pile *pile, char **arg, int l)
 		value = malloc(sizeof(int));
 		if (!value)
 			return ;
-		*value = ft_atoi(arg[i + 1]);
+		*value = ft_atoi(arg[i]);
 		tmp = ft_lstnew(value);
 		ft_lstadd_back(&(pile->pile_a), tmp);
 		i++;
@@ -126,20 +126,45 @@ void	choose_sort(t_pile *pile)
 
 }
 
+void free_args(char **args)
+{
+	int i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+
 int	main(int argc, char **argv)
 {
 	t_pile	*pile;
-	ft_printf("%d", argc);
+	char	**args;
+	int		arg_count;
+
+	arg_count = argc - 1;
 	if (argc > 1)
 	{
 		if (argc == 2)
-			//TODO faire en sorte de fonctionner meme avec comme argument "4 67 3 87 23"
-		/*if (check_errors(argc, argv))
-			handle_errors("Error not number or not int\n");*/
+		{
+			args = ft_split(argv[1], ' ');
+			if (!args)
+				handle_errors("Error\n");
+			arg_count = 0;
+			while (args[arg_count])
+				arg_count++;
+		}
+		else
+			args = argv + 1;
+		if (check_errors(arg_count, args))
+			handle_errors("Error not number or not int\n");
 		pile = malloc(sizeof(t_pile));
 		if (!pile)
-			handle_errors("Error\n");
-		init(pile, argv, argc - 1);
+			handle_errors("Error p\n");
+		init(pile, args, arg_count);
+		if (argc == 2)
+			free_args(args);
 		if (check_double(pile->pile_a))
 		{
 			free_list(&(pile->pile_a));
@@ -149,11 +174,11 @@ int	main(int argc, char **argv)
 		if (is_sorted(pile->pile_a))
 			return (0);
 		choose_sort(pile);
-		debug_piles(pile);
+		//debug_piles(pile);
 		free_list(&(pile->pile_a));
 		free_list(&(pile->pile_b));
 		free(pile);
-		ft_printf("nombre de mouvement : %d", g_count);
+		//ft_printf("nombre de mouvement : %d", g_count);
 	}
 	return (0);
 }
