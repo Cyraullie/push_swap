@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:55:11 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/26 14:41:47 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:13:38 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	is_number(const char *str)
 			return (0);
 		str++;
 	}
-
 	return (1);
 }
 
@@ -78,16 +77,26 @@ int	is_sorted(t_list *a)
 	return (1);
 }
 
-int	check_errors(int argc, char **argv)
+int	check_errors(int argc, char **argv, t_pile *pile)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		if (!is_number(argv[i]) || !is_int(argv[i]))
+		{
+			write(STDERR_FILENO, "Error ", 6);
 			return (1);
+		}
 		i++;
 	}
+	if (check_double(pile->pile_a))
+	{
+		write(STDERR_FILENO, "Error ", 6);
+		return (1);
+	}
+	else if (is_sorted(pile->pile_a))
+		return (1);
 	return (0);
 }
