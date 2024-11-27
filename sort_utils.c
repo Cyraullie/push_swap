@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:30:03 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/25 15:42:22 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:11:16 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,32 @@ int	find_position(t_list *list, int target)
 		position++;
 	}
 	return (-1);
+}
+
+int	find_max(t_list *pile)
+{
+	int	max;
+
+	max = INT_MIN;
+	while (pile)
+	{
+		if (*(int *)pile->content > max)
+			max = *(int *)pile->content;
+		pile = pile->next;
+	}
+	return (max);
+}
+
+void	find_min_max(t_list *pile, int *min, int *max)
+{
+	*min = INT_MAX;
+	*max = INT_MIN;
+	while (pile)
+	{
+		if (*(int *)pile->content < *min)
+			*min = *(int *)pile->content;
+		if (*(int *)pile->content > *max)
+			*max = *(int *)pile->content;
+		pile = pile->next;
+	}
 }
