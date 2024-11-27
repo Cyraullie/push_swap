@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/27 13:59:34 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:20:33 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	turkish_sort(t_pile *piles)
 	find_min_max(piles->pile_a, &min, &max);
 	range = max - min;
 	max_bits = get_max_bits(range);
-	b(size, min, max_bits, piles);
-	prot(size, min, piles);
+	turk_loop(size, min, max_bits, piles);
+	turk_sort(size, min, piles);
 }
 
 void	turk_loop(int size, int min, int max_bits, t_pile *piles)
