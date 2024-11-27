@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:46:10 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/19 17:27:53 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:16:24 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,39 @@ int	isrevsorted(t_pile	*pile)
 	return (1);
 }
 
-void	check_pile(t_list *list)
+void	free_args(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+
+void	free_list(t_list **lst)
 {
 	t_list	*tmp;
 
-	tmp = list;
-	while (tmp != NULL)
+	while (*lst)
 	{
-		printf("%d\n", *(int *)tmp->content);
-		tmp = tmp->next;
+		tmp = (*lst)->next;
+		free((*lst)->content);
+		free(*lst);
+		*lst = tmp;
 	}
+	*lst = NULL;
 }
 
-void	debug_piles(t_pile *pile)
+int	free_all(int argc, char **args, t_pile *pile)
 {
-	printf("\na\n-\n");
-	check_pile(pile->pile_a);
-	printf("\nb\n-\n");
-	check_pile(pile->pile_b);
+	if (argc == 2)
+		free_args(args);
+	free_list(&(pile->pile_a));
+	free_list(&(pile->pile_b));
+	free(pile);
+	return (0);
 }
