@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/27 14:14:23 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:35:31 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 	{
 		args = ft_split(argv[1], ' ');
 		if (!args)
-			write(STDERR_FILENO, "Error", 6);
+			write(STDERR_FILENO, "Error\n", 6);
 		arg_count = 0;
 		while (args[arg_count])
 			arg_count++;
@@ -98,7 +98,7 @@ int	main(int argc, char **argv)
 		args = argv + 1;
 	pile = malloc(sizeof(t_pile));
 	if (!pile)
-		write(STDERR_FILENO, "Error", 6);
+		write(STDERR_FILENO, "Error\n", 6);
 	init(pile, args, arg_count);
 	if (!check_errors(arg_count, args, pile))
 		choose_sort(pile);
