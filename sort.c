@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/29 15:36:27 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:12:19 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 //TODO enlever le sort 5 parce que pas le droit
 //TODO opti le tri parce que 69 pour 6 nombre = caca
 //TODO peut etre faire avec des index ? genre on donne un index a chaque nombre et on trie l'index.
+//TODO ARG=$(python3 generator.py 100 1 1000); ./push_swap $ARG | wc -l
 void	sort_three(t_pile *piles)
 {
 	int	a;
