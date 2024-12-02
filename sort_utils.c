@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:30:03 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/27 14:36:25 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:09:04 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,31 @@ void	find_min_max(t_list *pile, int *min, int *max)
 			*max = *(int *)pile->content;
 		pile = pile->next;
 	}
+}
+int find_min(t_list *pile)
+{
+    int min = INT_MAX;
+    t_list *current = pile;
+
+    while (current)
+    {
+        if (*(int *)current->content < min)
+            min = *(int *)current->content;
+        current = current->next;
+    }
+    return min;
+}
+
+int find_max(t_list *pile)
+{
+    int max = INT_MIN;
+    t_list *current = pile;
+
+    while (current)
+    {
+        if (*(int *)current->content > max)
+            max = *(int *)current->content;
+        current = current->next;
+    }
+    return max;
 }

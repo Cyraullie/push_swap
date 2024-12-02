@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/29 15:35:31 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:33:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,22 @@ void	init(t_pile *pile, char **arg, int l)
 
 void	choose_sort(t_pile *pile)
 {
-	int	size;
+	int	len;
 
-	size = ft_lstsize(pile->pile_a);
-	if (size == 2)
+	len = ft_lstsize(pile->stack_a);
+	/*if (check_sorting(&pile->stack_a))
+		return ;*/
+	if (len == 2)
 	{
-		if (*(int *)pile->pile_a->content > *(int *)pile->pile_a->next->content)
+		if (pile->pile_a->content > pile->pile_a->next->content)
 			handle_format(pile, "sa");
 	}
-	else if (size <= 5)
-		sort_five(pile);
+	/*else if (len == 3)
+		sort_3nbr(pile);
+	else if (len == 5)
+		sort_5nbr(pile);
 	else
-		turkish_sort(pile);
+		quick_sort(pile, ft_lstsize(pile->pile_a));*/
 }
 
 int	main(int argc, char **argv)

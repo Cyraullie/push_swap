@@ -5,46 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 16:46:10 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/27 14:31:47 by cgoldens         ###   ########.fr       */
+/*   Created: 2024/12/02 16:29:41 by cgoldens          #+#    #+#             */
+/*   Updated: 2024/12/02 16:29:48 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_args(char **args)
-{
-	int	i;
-
-	i = 0;
-	while (args[i])
-	{
-		free(args[i]);
-		i++;
-	}
-	free(args);
-}
-
-void	free_list(t_list **lst)
+void	index_replace(t_list *lst, int n, int to)
 {
 	t_list	*tmp;
 
-	while (*lst)
+	tmp = lst;
+	while (tmp)
 	{
-		tmp = (*lst)->next;
-		free((*lst)->content);
-		free(*lst);
-		*lst = tmp;
+		if (tmp->index == -1 && tmp->content == n)
+			break ;
+		tmp = tmp->next;
 	}
-	*lst = NULL;
+	tmp->index = to;
 }
 
-int	free_all(int argc, char **args, t_pile *pile)
+int	min_nbr(t_list *lst)
 {
-	if (argc == 2)
-		free_args(args);
-	free_list(&(pile->pile_a));
-	free_list(&(pile->pile_b));
-	free(pile);
-	return (0);
+	t_list		*tmp;
+	long int	min;
+
+	min = LONG_MAX;
+	tmp = lst;
+	while (tmp)
+	{
+		if (tmp->index == -1 && tmp->content < min)
+			min = tmp->content;
+		tmp = tmp->next;
+	}
+	return (min);
+}
+
+void	add_index(t_list *lst)
+{
+	int	len;
+	int	min;
+	int	i;
+
+	i = 0;
+	len = ft_lstsize(lst);
+	while (i < len)
+	{
+		min = min_nbr(lst);
+		index_replace(lst, min, i);
+		i++;
+	}
 }
