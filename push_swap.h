@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/02 16:30:18 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:28:52 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void	rrr(t_list **a, t_list **b);
 
 
 void	add_index(t_list *lst);
+void	debug_pile(t_pile *pile);
 #endif
