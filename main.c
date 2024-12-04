@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 14:38:25 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:14:29 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,43 @@ void	choose_sort(t_pile *pile)
 		if (*(int *)pile->pile_a->content > *(int *)pile->pile_a->next->content)
 			handle_format(pile, "sa");
 	}
-	/*else if (len == 3)
-		sort_3nbr(pile);
+	else if (len == 3)
+		sort_three(pile);
+	/*
 	else if (len == 5)
 		sort_5nbr(pile);
 	else
 		quick_sort(pile, ft_lstsize(pile->pile_a));*/
+}
+
+int count_arg(char **ag)
+{
+	int		arg_count;
+
+	arg_count = 0;
+	while (ag[arg_count])
+		arg_count++;
+	return (arg_count);
+}
+
+char **arg_split(char **ag)
+{
+	char	**args;
+
+	args = ft_split(ag[1], ' ');
+	if (!args)
+	{
+		free_args(args);
+		ft_error();
+		exit (EXIT_FAILURE);
+	}
+	return (args);
+}
+
+int	ft_error(void)
+{
+	write(STDERR_FILENO, "Error\n", 6);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -88,27 +119,25 @@ int	main(int argc, char **argv)
 	t_pile	*pile;
 	char	**args;
 	int		arg_count;
+	int		e;
 
+	e = 0;
 	arg_count = argc - 1;
+	args = argv + 1;
 	if (argc < 1)
 		return (1);
 	if (argc == 2)
 	{
-		args = ft_split(argv[1], ' ');
-		if (!args)
-			write(STDERR_FILENO, "Error\n", 6);
-		arg_count = 0;
-		while (args[arg_count])
-			arg_count++;
+		args = arg_split(argv);
+		arg_count = count_arg(args);
 	}
-	else
-		args = argv + 1;
 	pile = malloc(sizeof(t_pile));
 	if (!pile)
-		write(STDERR_FILENO, "Error\n", 6);
+		e = ft_error();
 	init(pile, args, arg_count);
-	if (!check_errors(arg_count, args, pile))
+	if (!check_errors(arg_count, args, pile, &e))
 		choose_sort(pile);
 	debug_pile(pile);
-	return (free_all(argc, args, pile));
+	free_all(argc, args, pile);
+	return (e);
 }
