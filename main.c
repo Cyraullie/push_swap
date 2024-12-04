@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/02 16:33:11 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:38:25 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,24 @@ void	init(t_pile *pile, char **arg, int l)
 			return ;
 		*value = ft_atoi(arg[i]);
 		tmp = ft_lstnew(value);
+		tmp->index = -1;
 		ft_lstadd_back(&(pile->pile_a), tmp);
 		i++;
 	}
+	add_index(pile->pile_a);
 }
 
 void	choose_sort(t_pile *pile)
 {
 	int	len;
 
-	len = ft_lstsize(pile->stack_a);
+	len = ft_lstsize(pile->pile_a);
 	/*if (check_sorting(&pile->stack_a))
 		return ;*/
+		
 	if (len == 2)
 	{
-		if (pile->pile_a->content > pile->pile_a->next->content)
+		if (*(int *)pile->pile_a->content > *(int *)pile->pile_a->next->content)
 			handle_format(pile, "sa");
 	}
 	/*else if (len == 3)
@@ -106,5 +109,6 @@ int	main(int argc, char **argv)
 	init(pile, args, arg_count);
 	if (!check_errors(arg_count, args, pile))
 		choose_sort(pile);
+	debug_pile(pile);
 	return (free_all(argc, args, pile));
 }
