@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:29:41 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 14:38:56 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:17:31 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,48 @@ void	add_index(t_list *lst)
 		index_replace(lst, min, i);
 		i++;
 	}
+}
+
+int	isrevsorted(t_pile *pile)
+{
+	t_list	*tmp;
+
+	tmp = pile->pile_a;
+	while (tmp->next)
+	{
+		if (*(int *)tmp->content < *(int *)tmp->next->content)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+char **arg_split(char **ag)
+{
+	char	**args;
+
+	args = ft_split(ag[1], ' ');
+	if (!args)
+	{
+		free_args(args);
+		ft_error();
+		exit (EXIT_FAILURE);
+	}
+	return (args);
+}
+
+int	ft_error(void)
+{
+	write(STDERR_FILENO, "Error\n", 6);
+	return (1);
+}
+
+int	count_arg(char **ag)
+{
+	int		arg_count;
+
+	arg_count = 0;
+	while (ag[arg_count])
+		arg_count++;
+	return (arg_count);
 }

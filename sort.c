@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/02 16:25:40 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:42:18 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,31 @@
 //TODO ARG=$(python3 generator.py 100 1 1000); ./push_swap $ARG | wc -l
 void sort_three(t_pile *piles)
 {
-	int	size;
-	int	a;
-	int	b;
-	int	c;
+	t_list	*last;
 
-	size = ft_lstsize(piles->pile_a);
-	if (size == 2)
-	{
-		if (*(int *)piles->pile_a->content > *(int *)piles->pile_a->next->content)
-			handle_format(piles, "sa");
+	if (check_sorting(&piles->pile_a))
 		return ;
-	}
-
-	a = *(int *)piles->pile_a->content;
-	b = *(int *)piles->pile_a->next->content;
-	c = *(int *)piles->pile_a->next->next->content;
-
-	if (a > b && b < c && a < c)
-		handle_format(piles, "sa");
-	else if (a > b && b > c)
+	last = ft_lstlast(piles->pile_a);
+	if (isrevsorted(piles))
 	{
 		handle_format(piles, "sa");
 		handle_format(piles, "rra");
 	}
-	else if (a > b && b < c && a > c)
+	else if (*(int *)piles->pile_a->content < *(int *)last->content
+		&& *(int *)piles->pile_a->next->content < *(int *)last->content)
+		handle_format(piles, "sa");
+	else if (*(int *)piles->pile_a->content > *(int *)last->content
+		&& *(int *)piles->pile_a->next->content < *(int *)last->content)
 		handle_format(piles, "ra");
-	else if (a < b && b > c && a < c)
+	else if (*(int *)piles->pile_a->content < *(int *)last->content
+		&& *(int *)piles->pile_a->next->content > *(int *)last->content)
 	{
 		handle_format(piles, "sa");
 		handle_format(piles, "ra");
 	}
-	else if (a < b && b > c && a > c)
+	else if (*(int *)piles->pile_a->content > *(int *)last->content
+		&& *(int *)piles->pile_a->next->content > *(int *)last->content)
 		handle_format(piles, "rra");
 }
+
+//TODO use quick sort with median pivot :)

@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 16:14:29 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:17:25 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,36 +82,6 @@ void	choose_sort(t_pile *pile)
 		sort_5nbr(pile);
 	else
 		quick_sort(pile, ft_lstsize(pile->pile_a));*/
-}
-
-int count_arg(char **ag)
-{
-	int		arg_count;
-
-	arg_count = 0;
-	while (ag[arg_count])
-		arg_count++;
-	return (arg_count);
-}
-
-char **arg_split(char **ag)
-{
-	char	**args;
-
-	args = ft_split(ag[1], ' ');
-	if (!args)
-	{
-		free_args(args);
-		ft_error();
-		exit (EXIT_FAILURE);
-	}
-	return (args);
-}
-
-int	ft_error(void)
-{
-	write(STDERR_FILENO, "Error\n", 6);
-	return (1);
 }
 
 int	main(int argc, char **argv)

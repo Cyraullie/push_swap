@@ -6,12 +6,12 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:30:03 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/02 15:09:04 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:14:18 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void	move_to_top(t_pile *pile, int value, char stack_name)
 {
 	int		position;
@@ -50,8 +50,8 @@ void	move_min_to_b(t_pile *pile)
 	}
 	move_to_top(pile, min_value, 'a');
 	handle_format(pile, "pb");
-}
-
+}*/
+/*
 int	find_position(t_list *list, int target)
 {
 	int		position;
@@ -67,7 +67,7 @@ int	find_position(t_list *list, int target)
 		position++;
 	}
 	return (-1);
-}
+}*/
 
 void	find_min_max(t_list *pile, int *min, int *max)
 {

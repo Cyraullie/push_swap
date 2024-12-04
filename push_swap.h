@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 16:12:11 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:18:04 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ int		check_double(t_list *a);
 int		is_number(const char *str);
 int		is_int(const char *str);
 int		is_sorted(t_list *a);
-//int		check_errors(int argc, char **argv, t_pile *pile);
-
-int	ft_error(void);
-int	check_errors(int argc, char **argv, t_pile *pile, int *e);
+int		check_errors(int argc, char **argv, t_pile *pile, int *e);
 //operation
 void	sa(t_list **a);
 void	sb(t_list **b);
@@ -67,6 +64,9 @@ void	rrr(t_list **a, t_list **b);
 
 void	add_index(t_list *lst);
 void	debug_pile(t_pile *pile);
-int	isrevsorted(t_pile *pile);
-int	check_sorting(t_list **list);
+int		isrevsorted(t_pile *pile);
+int		check_sorting(t_list **list);
+int		ft_error(void);
+char 	**arg_split(char **ag);
+int		count_arg(char **ag);
 #endif
