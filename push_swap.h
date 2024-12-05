@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:21 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 16:18:04 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:15:17 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_pile
 void	handle_format(t_pile *pile, char *f);
 
 //sort
-void	sort_three(t_pile *pile);
+void	sort_three(t_pile *piles, t_list *lst);
 
 //sort_utils
 /*void	move_min_to_b(t_pile *pile);
@@ -48,6 +48,7 @@ int		is_number(const char *str);
 int		is_int(const char *str);
 int		is_sorted(t_list *a);
 int		check_errors(int argc, char **argv, t_pile *pile, int *e);
+
 //operation
 void	sa(t_list **a);
 void	sb(t_list **b);
@@ -61,12 +62,16 @@ void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
 
-
+//TODO a trier
 void	add_index(t_list *lst);
 void	debug_pile(t_pile *pile);
-int		isrevsorted(t_pile *pile);
+int	isrevsorted(t_list *lst);
 int		check_sorting(t_list **list);
 int		ft_error(void);
 char 	**arg_split(char **ag);
 int		count_arg(char **ag);
+void	quick_sort(t_pile *pile);
+void quick_sort_b(t_pile *piles, int size);
+void quick_sort_a(t_pile *piles, int size);
+
 #endif

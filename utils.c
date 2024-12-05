@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:29:41 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 16:17:31 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:15:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void	add_index(t_list *lst)
 	}
 }
 
-int	isrevsorted(t_pile *pile)
+int	isrevsorted(t_list *lst)
 {
 	t_list	*tmp;
 
-	tmp = pile->pile_a;
+	tmp = lst;
 	while (tmp->next)
 	{
 		if (*(int *)tmp->content < *(int *)tmp->next->content)
