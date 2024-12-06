@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:24:07 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/06 16:20:23 by cgoldens         ###   ########.fr       */
+/*   Created: 2024/12/06 16:18:58 by cgoldens          #+#    #+#             */
+/*   Updated: 2024/12/06 16:19:32 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_pile(t_list *list)
+char	**arg_split(char **ag)
 {
-	t_list	*tmp;
+	char	**args;
 
-	tmp = list;
-	while (tmp != NULL)
+	args = ft_split(ag[1], ' ');
+	if (!args)
 	{
-		printf("%d index:%d\n", *(int *)tmp->content, tmp->index);
-		tmp = tmp->next;
+		free_args(args);
+		ft_error();
+		exit (EXIT_FAILURE);
 	}
+	return (args);
 }
 
-void	debug_pile(t_pile *pile)
+int	ft_error(void)
 {
-	printf("\na\n-\n");
-	check_pile(pile->pile_a);
-	printf("\nb\n-\n");
-	check_pile(pile->pile_b);
+	write(STDERR_FILENO, "Error\n", 6);
+	return (1);
+}
+
+int	count_arg(char **ag)
+{
+	int		arg_count;
+
+	arg_count = 0;
+	while (ag[arg_count])
+		arg_count++;
+	return (arg_count);
 }

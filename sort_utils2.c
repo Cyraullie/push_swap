@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:53:24 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/11/27 14:37:06 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:22:25 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,22 @@ int	get_max_bits(int range)
 		range >>= 1;
 	}
 	return (max_bits);
+}
+
+int	find_pivot(t_list *lst)
+{
+	int		max;
+	t_list	*tmp;
+
+	max = INT_MIN;
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		if (max < tmp->index)
+			max = tmp->index;
+		tmp = tmp->next;
+	}
+	if (ft_lstsize(lst) == 4)
+		max++;
+	return ((max) / 2);
 }

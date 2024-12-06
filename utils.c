@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:29:41 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/05 16:15:11 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:19:05 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,41 +63,16 @@ int	isrevsorted(t_list *lst)
 	t_list	*tmp;
 
 	tmp = lst;
-	while (tmp->next)
+	while (tmp != NULL)
 	{
-		if (*(int *)tmp->content < *(int *)tmp->next->content)
-			return (0);
-		tmp = tmp->next;
+		if (tmp->next != NULL)
+		{
+			if (*(int *)tmp->content < *(int *)tmp->next->content)
+				return (0);
+			tmp = tmp->next;
+		}
+		else
+			break ;
 	}
 	return (1);
-}
-
-char **arg_split(char **ag)
-{
-	char	**args;
-
-	args = ft_split(ag[1], ' ');
-	if (!args)
-	{
-		free_args(args);
-		ft_error();
-		exit (EXIT_FAILURE);
-	}
-	return (args);
-}
-
-int	ft_error(void)
-{
-	write(STDERR_FILENO, "Error\n", 6);
-	return (1);
-}
-
-int	count_arg(char **ag)
-{
-	int		arg_count;
-
-	arg_count = 0;
-	while (ag[arg_count])
-		arg_count++;
-	return (arg_count);
 }

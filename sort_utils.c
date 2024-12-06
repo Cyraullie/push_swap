@@ -6,68 +6,11 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:30:03 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/04 14:14:18 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:22:11 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void	move_to_top(t_pile *pile, int value, char stack_name)
-{
-	int		position;
-	int		size;
-	t_list	**stack;
-
-	if (stack_name == 'a')
-		stack = &(pile->pile_a);
-	else
-		stack = &(pile->pile_b);
-	position = find_position(*stack, value);
-	size = ft_lstsize(*stack);
-	if (position == -1)
-		return ;
-	if (position <= size / 2)
-		move_top_util(position, pile, stack_name, "r");
-	else
-	{
-		position = size - position;
-		move_top_util(position, pile, stack_name, "rr");
-	}
-}
-
-void	move_min_to_b(t_pile *pile)
-{
-	int		min_value;
-	t_list	*current;
-
-	min_value = *(int *)pile->pile_a->content;
-	current = pile->pile_a->next;
-	while (current != NULL)
-	{
-		if (*(int *)current->content < min_value)
-			min_value = *(int *)current->content;
-		current = current->next;
-	}
-	move_to_top(pile, min_value, 'a');
-	handle_format(pile, "pb");
-}*/
-/*
-int	find_position(t_list *list, int target)
-{
-	int		position;
-	t_list	*current;
-
-	position = 0;
-	current = list;
-	while (current != NULL)
-	{
-		if (*(int *)current->content == target)
-			return (position);
-		current = current->next;
-		position++;
-	}
-	return (-1);
-}*/
 
 void	find_min_max(t_list *pile, int *min, int *max)
 {
@@ -82,30 +25,66 @@ void	find_min_max(t_list *pile, int *min, int *max)
 		pile = pile->next;
 	}
 }
-int find_min(t_list *pile)
-{
-    int min = INT_MAX;
-    t_list *current = pile;
 
-    while (current)
-    {
-        if (*(int *)current->content < min)
-            min = *(int *)current->content;
-        current = current->next;
-    }
-    return min;
+int	find_min(t_list *pile)
+{
+	int		min;
+	t_list	*current;
+
+	min = INT_MAX;
+	current = pile;
+	while (current)
+	{
+		if (*(int *)current->content < min)
+			min = *(int *)current->content;
+		current = current->next;
+	}
+	return (min);
 }
 
-int find_max(t_list *pile)
+int	find_max(t_list *pile)
 {
-    int max = INT_MIN;
-    t_list *current = pile;
+	int		max;
+	t_list	*current;
 
-    while (current)
-    {
-        if (*(int *)current->content > max)
-            max = *(int *)current->content;
-        current = current->next;
-    }
-    return max;
+	max = INT_MIN;
+	current = pile;
+	while (current)
+	{
+		if (*(int *)current->content > max)
+			max = *(int *)current->content;
+		current = current->next;
+	}
+	return (max);
+}
+
+void	check_b(t_pile *piles)
+{
+	int	i;
+
+	i = 0;
+	if (!isrevsorted(piles->pile_b))
+	{
+		if (ft_lstsize(piles->pile_b) == 2)
+			handle_format(piles, "sb");
+		else
+			rev_sort_three_b(piles);
+	}
+	i = ft_lstsize(piles->pile_b);
+	while (i != 0)
+	{
+		handle_format(piles, "pa");
+		i--;
+	}
+}
+
+void	check_a(t_pile *piles)
+{
+	if (!is_sorted(piles->pile_a))
+	{
+		if (ft_lstsize(piles->pile_a) == 2)
+			handle_format(piles, "sa");
+		else
+			quick_sort_a(piles, ft_lstsize(piles->pile_a));
+	}
 }
