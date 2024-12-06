@@ -6,7 +6,7 @@
 #    By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 11:31:20 by cgoldens          #+#    #+#              #
-#    Updated: 2024/12/06 16:23:28 by cgoldens         ###   ########.fr        #
+#    Updated: 2024/12/06 16:38:07 by cgoldens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT = ./libft/libft.a
 RM = rm -rf
 
 SRCS = main.c swap.c push.c rotate.c reverse.c check.c sort.c utils.c sort_utils.c sort_utils2.c free.c \
-	utils2.c sort_utils3.c sort_utils4.c check2.c
+	utils2.c check2.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,12 +6,12 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:06:53 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/06 16:17:57 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:30:34 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//TODO ARG=$(python3 generator.py 100 1 1000); ./push_swap $ARG | wc -l
+
 void	sort_three_a(t_pile *piles)
 {
 	t_list	*last;
