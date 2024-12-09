@@ -6,7 +6,7 @@
 /*   By: cgoldens <cgoldens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:56:04 by cgoldens          #+#    #+#             */
-/*   Updated: 2024/12/06 16:09:18 by cgoldens         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:47:15 by cgoldens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	init(t_pile *pile, char **arg, int l)
 		*value = ft_atoi(arg[i]);
 		tmp = ft_lstnew(value);
 		tmp->index = -1;
+		tmp->flag = 0;
 		ft_lstadd_back(&(pile->pile_a), tmp);
 		i++;
 	}
